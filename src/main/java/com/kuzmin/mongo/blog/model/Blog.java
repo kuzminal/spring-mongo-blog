@@ -6,6 +6,7 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Document
@@ -34,5 +35,11 @@ public class Blog {
 
     public void incrementCommnetsCount() {
         commentsCount++;
+    }
+
+    public String dateToStringFormat() {
+        String pattern = "MMMM dd, yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "US"));
+        return simpleDateFormat.format(new Date());
     }
 }

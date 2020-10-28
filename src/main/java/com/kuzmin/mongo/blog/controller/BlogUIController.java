@@ -19,11 +19,6 @@ public class BlogUIController {
         return "home";
     }
 
-    @GetMapping("/user")
-    public String userIndex() {
-        return "user/index";
-    }
-
     @GetMapping("/login")
     public String login() {
         return "login";

@@ -15,13 +15,13 @@
             <!-- Blog Entries Column -->
             <div class="col-md-8">
 
-                <h1 class="my-4">Page Heading
-                    <small>Secondary Text</small>
+                <h1 class="my-4">Blog list</br>
+                    <small>You can find anything interesting in my blog here</small>
                 </h1>
 
                 <!-- Blog Post -->
                 <tr th:if="${blogs.empty}">
-                    <td colspan="2"> No Books Available </td>
+                    <td colspan="2"> No Posts Available </td>
                 </tr>
                 <tr th:each="blog : ${blogs}">
                     <div class="card mb-4">

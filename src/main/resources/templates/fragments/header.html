@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <body>
 <th:block th:fragment="header">
     <!-- Navigation -->
@@ -24,6 +25,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a sec:authorize="isAuthenticated()" class="signout" th:href="@{/logout}">Sign Out</a>
+                        <a sec:authorize="!isAuthenticated()" class="signin" th:href="@{/login}">Sign in</a>
                     </li>
                 </ul>
             </div>

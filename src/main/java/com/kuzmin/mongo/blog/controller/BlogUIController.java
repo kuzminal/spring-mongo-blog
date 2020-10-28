@@ -16,6 +16,6 @@ public class BlogUIController {
     @GetMapping("/")
     public String welcome(Model model) {
         model.addAttribute("blogs", blogService.getAllBlogs());
-        return "index";
+        return "home";
     }
 }

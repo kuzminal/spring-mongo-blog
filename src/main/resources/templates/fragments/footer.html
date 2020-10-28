@@ -3,25 +3,27 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 <th:block th:fragment="footer">
-    <!--<footer>
+    <footer class="py-5 bg-dark">
         <div class="container">
-            <p>
-                &copy; Memorynotfound.com
+            <p class="m-0 text-center text-white">
+                &copy; Copyright &copy; Your Website 2020
+                <div th:if="${param.error}">
                 <span sec:authorize="isAuthenticated()" style="display: inline-block;">
                     | Logged user: <span sec:authentication="name"></span> |
                     Roles: <span sec:authentication="principal.authorities"></span> |
                     <a th:href="@{/logout}">Sign Out</a>
                 </span>
+                </div>
             </p>
         </div>
-    </footer>-->
+    </footer>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <!--<footer class="py-5 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
         </div>
-    </footer>
+    </footer>-->
 </th:block>
 </body>
 </html>

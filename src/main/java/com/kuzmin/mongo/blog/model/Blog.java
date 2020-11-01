@@ -21,6 +21,7 @@ public class Blog {
     private Date createdDate;
     private Date publishDate;
     private List<Comment> comments;
+    private String categoryId;
     private Long commentsCount = 0L;
 
     public void addComment(Comment comment) {

@@ -1,21 +1,30 @@
 package com.kuzmin.mongo.blog.controller;
 
+import com.kuzmin.mongo.blog.dto.BlogDTO;
 import com.kuzmin.mongo.blog.model.Blog;
+import com.kuzmin.mongo.blog.model.Category;
 import com.kuzmin.mongo.blog.model.Comment;
 import com.kuzmin.mongo.blog.service.BlogService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.kuzmin.mongo.blog.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/ui")
 public class BlogController {
-    @Autowired
     BlogService blogService;
+    CategoryService categoryService;
+
+    public BlogController(BlogService blogService, CategoryService categoryService) {
+        this.blogService = blogService;
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/blogs")
-    public List<Blog> getAllBlogs() {
-        return blogService.getAllBlogs();
+    public List<BlogDTO> getAllBlogs(@RequestParam(required = false) Optional<String> categoryId) {
+        return blogService.getAllBlogs(categoryId);
     }
 
     @PostMapping("/blogs")
@@ -41,5 +50,15 @@ public class BlogController {
     @PostMapping("/blogs/{blogId}/comments")
     public Comment addComment(@RequestBody Comment comment, @PathVariable("blogId") String blogId) {
         return blogService.addComment(comment, blogId);
+    }
+
+    @GetMapping("/categories")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
+    }
+
+    @PostMapping("/categories")
+    public Category addCategory(@RequestBody Category category) {
+        return categoryService.addUpdateCategory(category);
     }
 }
